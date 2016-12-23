@@ -23,10 +23,11 @@ $time = file_get_contents("http://api.bridge-ads.ir/td/?td=time");
 $date = file_get_contents("http://api.bridge-ads.ir/td/?td=date");
 
 if(isset($update->callback_query)){
-    $callbackMessage = 'آپدیت شد';
+    $callbackMessage = "Time Updated | زمان بروز رسانی شد";
     var_dump(makeHTTPRequest('answerCallbackQuery',[
         'callback_query_id'=>$update->callback_query->id,
-        'text'=>$callbackMessage
+        'text'=>$callbackMessage,
+        'show_alert'=>true
     ]));
     $chat_id = $update->callback_query->message->chat->id;
     $message_id = $update->callback_query->message->message_id;
@@ -48,8 +49,8 @@ The time is🕕
             'reply_markup'=>json_encode([
                 'inline_keyboard'=>[
                     [
-                        ['text'=>"رفرش زمان",'callback_data'=>"$tried"],
-                    ['text'=>"گیتاب اونیکس",'url'=>'https://github.com/onyxtm/tdbot']
+                        ['text'=>"Refresg|رفرش زمان",'callback_data'=>"$tried"],
+                    ['text'=>"Onyx Github|گیتاب اونیکس",'url'=>'https://github.com/onyxtm/tdbot']
                     ]
                 ]
             ])
@@ -71,9 +72,9 @@ The time is🕕
         'reply_markup'=>json_encode([
             'inline_keyboard'=>[
                 [
-                    ['text'=>"رفرش زمان",'callback_data'=>'1']
+                    ['text'=>"Refresh|رفرش زمان",'callback_data'=>'1']
                 ],[
-                    ['text'=>"گیتاب اونیکس",'url'=>'https://github.com/onyxtm/tdbot']
+                    ['text'=>"Onyx Github|گیتاب اونیکس",'url'=>'https://github.com/onyxtm/tdbot']
                 ]
             ]
         ])
